@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - Java Dead Code Analyzer</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="logo">
+            <i class="fas fa-code"></i>
+            <span>Java Dead Code Analyzer</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/upload">Upload</a>
+            <a href="/editor" class="active">Code Editor</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-code"></i> Java Code Editor</h1>
+        <p class="subtitle">Write or paste Java code. It will be compiled and analyzed for dead code.</p>
+    </div>
+
+    <div class="editor-container">
+        <!-- Class Name Input -->
+        <div class="input-group">
+            <label for="className">
+                <i class="fas fa-file-code"></i> Class Name
+            </label>
+            <input type="text" id="className" value="Example"
+                   placeholder="Enter class name (used for compilation)">
+        </div>
+
+        <!-- Code Editor -->
+        <div class="editor-card">
+            <div class="editor-header">
+                <h3><i class="fas fa-edit"></i> Java Code</h3>
+                <div class="editor-actions">
+                    <button class="btn btn-sm" onclick="resetToExample()">
+                        <i class="fas fa-redo"></i> Reset Example
+                    </button>
+                </div>
+            </div>
+            <textarea id="codeEditor">public class Example {
+    // This method will be called
+    public static void main(String[] args) {
+        liveMethod();
+    }
+
+    // Live method - called from main
+    public static void liveMethod() {
+        System.out.println("This method is used");
+    }
+
+    // Dead method - never called
+    public static void deadMethod() {
+        System.out.println("This code is dead");
+    }
+
+    // Write-only field
+    private String unusedField = "test";
+
+    // Used field
+    private int usedField = 10;
+
+    public void useFields() {
+        // Only writing to unusedField, never reading
+        unusedField = "changed";
+
+        // Both read and write
+        usedField = usedField * 2;
+    }
+}</textarea>
+        </div>
+
+        <!-- Analysis Options -->
+        <div class="options-card">
+            <h3><i class="fas fa-sliders-h"></i> Analysis Options</h3>
+            <div class="options-grid">
+                <label class="option-item">
+                    <input type="checkbox" id="editorReflection" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Reflection Analysis</h4>
+                        <p>Analyze reflection calls (Class.forName, Method.invoke)</p>
+                    </div>
+                </label>
+                <label class="option-item">
+                    <input type="checkbox" id="editorFields" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Field Analysis</h4>
+                        <p>Analyze field usage (unused/write-only fields)</p>
+                    </div>
+                </label>
+                <label class="option-item">
+                    <input type="checkbox" id="editorDeadBlocks" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Dead Code Blocks</h4>
+                        <p>Detect dead code blocks within methods</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-buttons">
+            <button class="btn btn-primary btn-lg" id="analyzeCodeBtn" onclick="analyzeCode()">
+                <i class="fas fa-play"></i> Compile & Analyze
+                <span class="spinner" id="codeSpinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+            </button>
+        </div>
+
+        <!-- Results -->
+        <div class="results-container" id="editorResults" style="display: none;">
+            <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+            <div class="results-content" id="editorResultsContainer"></div>
+        </div>
+
+        <!-- Error Alert -->
+        <div class="alert alert-danger" id="editorError" style="display: none;"></div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Java Dead Code Analyzer</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+<script src="/js/editor.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - Java Dead Code Analyzer</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="logo">
+            <i class="fas fa-code"></i>
+            <span>Java Dead Code Analyzer</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/upload">Upload</a>
+            <a href="/editor">Code Editor</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-chart-bar"></i> Analysis Results</h1>
+        <p class="subtitle">Detailed dead code analysis report</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="loading-container">
+        <div class="spinner-large">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <p>Loading analysis results...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="alert alert-danger" style="display: none;">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span id="errorMessage"></span>
+    </div>
+
+    <!-- Results Container -->
+    <div id="resultsContainer" class="results-page-container" style="display: none;">
+        <!-- Summary Cards -->
+        <div class="result-summary" id="summaryCards"></div>
+
+        <!-- Detailed Results -->
+        <div class="result-details" id="detailsContainer"></div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons" id="actionButtons"></div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Java Dead Code Analyzer</p>
+    </div>
+</footer>
+
+<script src="/js/common.js"></script>
+<script src="/js/results.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Bytecode Dead Code Analyzer</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="logo">
+            <i class="fas fa-code"></i>
+            <span>Java Dead Code Analyzer</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/upload">Upload</a>
+            <a href="/editor">Code Editor</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Find Dead Code in Your Java Projects</h1>
+        <p class="subtitle">Upload JAR files or paste Java code to detect unused methods, fields, and unreachable code blocks.</p>
+        <div class="cta-buttons">
+            <a href="/upload" class="btn btn-primary">
+                <i class="fas fa-cloud-upload-alt"></i> Upload JAR/Class
+            </a>
+            <a href="/editor" class="btn btn-secondary">
+                <i class="fas fa-code"></i> Try Code Editor
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <div class="container">
+        <h2>Why Use Our Analyzer?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Method Analysis</h3>
+                <p>Detect unused methods, including those called only via reflection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-list-check"></i>
+                </div>
+                <h3>Field Analysis</h3>
+                <p>Find unused and write-only fields in your classes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-code"></i>
+                </div>
+                <h3>Bytecode Analysis</h3>
+                <p>Works directly on compiled bytecode - no source code required.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload or Paste Code</h3>
+                <p>Upload JAR files, class files, or paste Java code directly.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Bytecode Analysis</h3>
+                <p>Our analyzer processes the bytecode to build a complete call graph.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Reflection Detection</h3>
+                <p>Detects method calls made via Java Reflection API.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Get Results</h3>
+                <p>Receive detailed report of dead code with actionable insights.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Java Dead Code Analyzer. All rights reserved.</p>
+        <p>Analyze your Java bytecode for unused methods and fields</p>
+    </div>
+</footer>
+
+<script src="/js/common.js"></script>
+</body>
+</html>

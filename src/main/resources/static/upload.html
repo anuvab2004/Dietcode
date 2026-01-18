@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files - Java Dead Code Analyzer</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="logo">
+            <i class="fas fa-code"></i>
+            <span>Java Dead Code Analyzer</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/upload" class="active">Upload</a>
+            <a href="/editor">Code Editor</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-cloud-upload-alt"></i> Upload Java Files</h1>
+        <p class="subtitle">Upload JAR files, class files, or directories containing compiled Java code.</p>
+    </div>
+
+    <div class="upload-container">
+        <!-- Upload Area -->
+        <div class="upload-area" id="uploadArea">
+            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+            <h3>Drop files here or click to browse</h3>
+            <p>Supports .jar, .class files and directories</p>
+            <input type="file" id="fileInput" multiple accept=".jar,.class" style="display: none;">
+            <button class="btn btn-outline" onclick="document.getElementById('fileInput').click()">
+                <i class="fas fa-folder-open"></i> Browse Files
+            </button>
+        </div>
+
+        <!-- Selected Files -->
+        <div class="selected-files" id="fileList" style="display: none;">
+            <h3>Selected Files:</h3>
+            <div class="file-list" id="selectedFiles"></div>
+            <button class="btn btn-danger" onclick="clearFiles()">
+                <i class="fas fa-trash"></i> Clear All
+            </button>
+        </div>
+
+        <!-- Analysis Options -->
+        <div class="options-card">
+            <h3><i class="fas fa-sliders-h"></i> Analysis Options</h3>
+            <div class="options-grid">
+                <label class="option-item">
+                    <input type="checkbox" id="checkReflection" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Reflection Analysis</h4>
+                        <p>Analyze reflection calls (Class.forName, Method.invoke)</p>
+                    </div>
+                </label>
+                <label class="option-item">
+                    <input type="checkbox" id="checkFields" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Field Analysis</h4>
+                        <p>Analyze field usage (unused/write-only fields)</p>
+                    </div>
+                </label>
+                <label class="option-item">
+                    <input type="checkbox" id="checkDeadBlocks" checked>
+                    <span class="checkmark"></span>
+                    <div class="option-content">
+                        <h4>Dead Code Blocks</h4>
+                        <p>Detect dead code blocks within methods</p>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Analyze Button -->
+        <div class="action-buttons">
+            <button class="btn btn-primary btn-lg" id="analyzeBtn" onclick="analyzeFiles()">
+                <i class="fas fa-play"></i> Analyze Files
+                <span class="spinner" id="analyzeSpinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+            </button>
+        </div>
+
+        <!-- Results -->
+        <div class="results-container" id="resultsSection" style="display: none;">
+            <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+            <div class="results-content" id="resultsContainer"></div>
+        </div>
+
+        <!-- Error Alert -->
+        <div class="alert alert-danger" id="errorAlert" style="display: none;"></div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Java Dead Code Analyzer</p>
+    </div>
+</footer>
+
+<script src="/js/upload.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>
