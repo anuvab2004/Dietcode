@@ -1,12 +1,12 @@
 # Build stage
-FROM maven:3.8.4-openjdk-11 AS build
+FROM maven:3.8.4-openjdk-16 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Run stage - Use Adoptium/Temurin (officially supported)
-FROM eclipse-temurin:11-jre-alpine
+# Run stage
+FROM openjdk:16-jre-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
