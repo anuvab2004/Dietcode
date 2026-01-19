@@ -1,4 +1,4 @@
-# Java Bytecode Dead Code Analyzer
+# DietCode- A Java Bytecode Dead Code Analyzer
 
 A comprehensive static analysis tool for Java bytecode that identifies dead methods, unused fields, and unreachable code blocks. The analyzer works directly on compiled `.class` files and JAR archives, making it perfect for analyzing production code without requiring source access.
 
